@@ -2,11 +2,20 @@
 ## Initialize the camera client.
 from cam_server import CamClient
 cam_client = CamClient()
-#
+
+# Print the list of available cameras.
+print(cam_client.get_cameras())
+
+# If modifying: Put the name of the camera you want to modify.
+#camera_to_modify = "SATES21-CAMS154-M1"
+
+# Retrieve the camera config.
+camera_config = cam_client.get_camera_config(camera_to_modify)
+
 ## Specify the desired camera config.
 camera_config={
-  'name': 'SARES11-SPEC125-M2',
-  'source': 'SARES11-SPEC125-M2',
+  'name': 'SATES21-CAMS154-GIGE8',
+  'source': 'SATES21-CAMS154-GIGE8',
   'source_type': 'epics',
   'mirror_x': False,
   'mirror_y': False,
@@ -22,10 +31,10 @@ camera_config={
 }
 
 ## Specify the new camera name.
-#new_camera_name = "SARES11-SPEC125-M2"
+new_camera_name = "SATES21-CAMS154-GIGE8"
 #
 ## Save the camera configuration.
-#cam_client.set_camera_config(new_camera_name, camera_config)
+cam_client.set_camera_config(new_camera_name, camera_config)
 #
 ## In case you need to, delete the camera config you just added.
 # cam_client.cam_client.delete_camera_config(new_camera_name)
